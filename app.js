@@ -8,6 +8,7 @@ const indexRouter = require('./app_server/routes');
 const loginRouter = require('./app_server/routes/login');
 const registerRouter = require('./app_server/routes/register');
 
+
 var app = express();
 
 // view engine setup
