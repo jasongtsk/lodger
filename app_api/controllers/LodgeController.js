@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const Lodges = mongoose.model('lodge');
+const LodgeController = mongoose.model('lodge');
 
-const lodgesList = async function (req, res) {
-    let lodges = await Lodges
+const index = async function (req, res) {
+    let lodges = await LodgeController
         .find();
     res.status(200).json(lodges);
 }
 
 module.exports = {
-    lodgesList
+    index
 };
