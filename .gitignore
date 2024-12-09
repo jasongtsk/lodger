@@ -32,4 +32,4 @@ package-lock.json
 yarn-error.log
 
 
-/sslcert/key.pem
+/key.pem

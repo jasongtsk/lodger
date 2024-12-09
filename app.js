@@ -8,7 +8,7 @@ var logger = require('morgan');
 var fs = require('fs');
 var http = require('http');
 var https = require('https');
-var privateKey = fs.readFileSync('./sslcert/key.pem', 'utf8');
+var privateKey = fs.readFileSync('./key.pem', 'utf8');
 var certificate = fs.readFileSync('./sslcert/cert.pem', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 
@@ -75,7 +75,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
