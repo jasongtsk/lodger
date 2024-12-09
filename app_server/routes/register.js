@@ -3,7 +3,9 @@ var router = express.Router();
 
 const RegisterController = require('../controllers/RegisterController');
 
-/* GET users listing. */
-router.get('/', RegisterController.create);
+/* */
+router.get('/register', RegisterController.create);
+
+router.post('/register', RegisterController.store);
 
 module.exports = router;

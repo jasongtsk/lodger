@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const ctrlLodges = require('../controllers/lodges');
+const LodgeController = require('../controllers/LodgeController');
 
 // lodges
-router
-    .route('/lodges')
-    .get(ctrlLodges.lodgesList)
+router.get('/lodges', LodgeController.index)
 
 module.exports = router;
