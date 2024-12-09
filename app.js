@@ -4,6 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// SSL
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+var privateKey = fs.readFileSync('./sslcert/key.pem', 'utf8');
+var certificate = fs.readFileSync('./sslcert/cert.pem', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+
 require('./app_api/models/db');
 const loginRouter = require('./app_server/routes/login');
 const registerRouter = require('./app_server/routes/register');
@@ -17,6 +25,10 @@ const app = express();
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'pug');
 
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+httpServer.listen(8000);
+httpsServer.listen(433)
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
